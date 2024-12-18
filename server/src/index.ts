@@ -5,6 +5,7 @@ import cors from "cors";
 import http from "http";
 import "dotenv/config";
 import { seedMain } from "./service/mainList.service";
+import { seedLOction } from "./service/loction.service";
 
 
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // seedMain()
+seedLOction()
 
 app.get("/ping", (req: Request, res: Response) => {
   res.status(200).send("pong");

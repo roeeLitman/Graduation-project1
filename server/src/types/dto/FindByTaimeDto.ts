@@ -1,6 +1,6 @@
 export interface IFindByTaimeDto {
-    firstYear: number,
-    lastYear: number,
+    firstyear: number,
+    lastyear: number,
     decade: boolean,
-    fiveYea: boolean,
+    fiveyea: boolean,
 } 

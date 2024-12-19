@@ -3,7 +3,7 @@ import { getObjOfYearAndAttacks } from "../controller/Year.controller";
 
 const yearRouter = Router()
 
-yearRouter.get("/incident-trends/:firstYear/:lastYear", getObjOfYearAndAttacks) 
+yearRouter.get("/incident-trends", getObjOfYearAndAttacks) 
 yearRouter.get("/groups-by-year", ()=>{})
 
 

@@ -2,25 +2,24 @@ import YearModel from "../models/Year";
 import {IFindByTaimeDto} from "../types/dto/FindByTaimeDto";
 
 
-export const getYearService = async ({firstYear,lastYear,decade,fiveYea}:IFindByTaimeDto) => {
-    const beforeDecade = new Date().getFullYear() - 11;
-    const beforeFiveYea = new Date().getFullYear() - 6;
+export const getYearService = async ({firstyear,lastyear,decade,fiveyea}:IFindByTaimeDto) => {
+    const beforeDecade = new Date().getFullYear() - 10;
+    const beforeFiveYea = new Date().getFullYear() - 5;
+    
     try {
-        if(!firstYear && !lastYear && !decade && !fiveYea){
+        if(!firstyear && !lastyear && !decade && !fiveyea){
             throw new Error("No data");
         }
-        if(firstYear && lastYear){
-            return await YearModel.find({year:{$gte:firstYear,$lte:lastYear}});
+        if(firstyear && lastyear){
+            return await YearModel.find({year:{$gte:firstyear,$lte:lastyear}});
         }
-        if(firstYear){
-            return await YearModel.find({year:firstYear});
+        if(firstyear){
+            return await YearModel.find({year:firstyear});
         }
-        //לא יהיה בשימוש מכיוון שהנתונים יגיעו רק בתווך 
         if(decade){
             return await YearModel.find({year:{$gte:beforeDecade}});
         }
-        //לא יהיה בשימוש מכיוון שהנתונים יגיעו רק בטווך 
-        if(fiveYea){
+        if(fiveyea){
             return await YearModel.find({year:{$gte:beforeFiveYea}});
         }
     } catch (error) {

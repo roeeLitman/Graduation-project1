@@ -77,7 +77,6 @@ export const seedLOction = async () => {
     }
 };
 
-
 export const seedAttack = async () => {
     try {
         let number = 0;

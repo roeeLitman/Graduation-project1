@@ -8,7 +8,7 @@ export  interface IYear extends Document {
 } 
 
 const dateSchema = new Schema<IYear>({
-    year:{type:String},
+    year: Number,
     listAmontType:{type:[{typeAttack:String,ampount:Number}]},
     listOrganization:{type:[{organization:String,amount:Number}]},
     listEvents:{type:[Schema.Types.ObjectId], ref:"MainList"}

@@ -5,6 +5,7 @@ import cors from "cors";
 import http from "http";
 import "dotenv/config";
 import yearRouter from "./routes/Year.route";
+import attackRouter from "./routes/attack.router";
 
 
 const PORT = process.env.PORT || 3000;
@@ -17,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/year", yearRouter)
-app.use("/api/", ()=>{})
+app.use("/api/typesAttack", attackRouter)
 app.use("/api/", ()=>{})
 
 app.get("/ping", (req: Request, res: Response) => {

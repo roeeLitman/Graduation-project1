@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // seedMain()
-seedLOction()
+// seedLOction()
 
 app.get("/ping", (req: Request, res: Response) => {
   res.status(200).send("pong");

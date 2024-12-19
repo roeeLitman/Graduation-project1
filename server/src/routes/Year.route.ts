@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getRatingTypesAttacks } from "../controllers/Year.controller";
+import { getObjOfYearAndAttacks } from "../controller/Year.controller";
 
 const yearRouter = Router()
 
-yearRouter.get("/incident-trends",getRatingTypesAttacks)
-yearRouter.get("/groups-by-year",getRatingTypesAttacks)
+yearRouter.get("/incident-trends/:firstYear/:lastYear", getObjOfYearAndAttacks) 
+yearRouter.get("/groups-by-year", ()=>{})
 
 
 export default yearRouter

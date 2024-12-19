@@ -4,20 +4,21 @@ import { connectDB } from "./config/db";
 import cors from "cors";
 import http from "http";
 import "dotenv/config";
-import { seedMain } from "./service/mainList.service";
+import yearRouter from "./routes/Year.route";
 
 
 const PORT = process.env.PORT || 3000;
 
 export const app = express();
 export const server = http.createServer(app);
+( async () => await connectDB())();
 
 app.use(cors());
-( async () => await connectDB())();
 app.use(express.json());
 
-// seedMain()
-// seedLOction()
+app.use("/api/year", yearRouter)
+app.use("/api/", ()=>{})
+app.use("/api/", ()=>{})
 
 app.get("/ping", (req: Request, res: Response) => {
   res.status(200).send("pong");

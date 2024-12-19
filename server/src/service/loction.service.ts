@@ -1,4 +1,5 @@
 import LocationModel from "../models/Loction";
+import OrganizationModel from "../models/organization";
 
 
 export const placesWithMostCasualties = async(city:string)=>{
@@ -26,6 +27,70 @@ export const placesWithMostCasualties = async(city:string)=>{
     }
 }
 
+
+// פונקציית עזר לארגונים ללא עיר
+const getTopOrganizations = async () => {
+    return OrganizationModel.aggregate([
+        {
+            $addFields: {
+                eventsCount: { $size: "$listEvents" }, // ספירת האירועים
+            },
+        },
+        { $sort: { eventsCount: -1 } }, // מיון לפי כמות אירועים
+        { $limit: 5 }, // הגבלת התוצאה ל-5
+        {
+            $project: {
+                name: 1,
+                eventsCount: 1, // רק שדות נדרשים
+            },
+        },
+    ]);
+};
+
+
+// פונקציית עזר לארגונים עם עיר
+const getTopOrganizationsByCity = async (city: string) => {
+    return LocationModel.aggregate([
+        { $match: { city } }, 
+        { $unwind: "$events" }, 
+        {
+            $group: {
+                _id: "$events.organization",
+                totalEvents: { $sum: "$events.amountEvents" }, 
+            },
+        },
+        { $sort: { totalEvents: -1 } }, // מיון לפי כמות האירועים
+        { $limit: 5 }, // הגבלת התוצאה ל-5
+        {
+            $project: {
+                organization: "$_id",
+                totalEvents: 1,
+            },
+        },
+    ]);
+};
+
+// פונקציה ראשית
+export const topOrganizationsFromDb = async (city: string) => {
+    try {
+        
+        if (!city) {
+            // אין עיר
+            return await getTopOrganizations();
+        }
+        // יש עיר
+        const location = await getTopOrganizationsByCity(city);
+
+        if (location.length === 0) {
+            return ["location not found"];
+        }
+
+        return location;
+    } catch (error) {
+        console.error("[service] Error in top organizations:", error);
+        throw error; // ניהול שגיאות
+    }
+};
 
 
 

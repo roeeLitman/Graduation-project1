@@ -5,7 +5,6 @@ import cors from "cors";
 import http from "http";
 import "dotenv/config";
 import { seedMain } from "./service/mainList.service";
-import { seedLOction } from "./service/loction.service";
 
 
 const PORT = process.env.PORT || 3000;

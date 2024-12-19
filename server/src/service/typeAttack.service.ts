@@ -1,5 +1,14 @@
 import TypesAttackModel from "../models/TypesAttack";
 
-const listAttackSorted = async () => {
-    return await TypesAttackModel.find().lean().sort({ casualties: -1 });
+export const listAttackSorted = async () => {
+    try {
+        return await TypesAttackModel.find()
+        .sort({ casualties: -1 })
+        .select('-listEvents')
+        .lean();
+    } catch (err) {
+        console.error("[service]Error fetching types of attacks:", err);
+        throw err
+    }
 };
+

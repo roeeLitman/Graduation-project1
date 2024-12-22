@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { listAttackSorted} from "../service/typeAttack.service"
 
 export const getAllAttackSorte = async(req:Request,res:Response)=>{
-    try {
+    try {        
         const listAttackSortedFromDb = await listAttackSorted()
         res.status(200).json(listAttackSortedFromDb)
     } catch (err) {

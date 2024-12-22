@@ -1,36 +1,61 @@
-import React from 'react'
-import { Pie } from 'react-chartjs-2';
+import React, { useEffect, useState } from "react";
+import "./RankingAttackTypes.css";
+import {
+    Chart as ChartJS,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+    Tooltip,
+    Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { getAttack } from "../../redux/slices/attackSlice";
+import { attackType } from "../../types/attackType";
+import { dataStatus } from "../../types/redux.typs";
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+
 
 export default function RankingAttackTypes() {
-  const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'], // תוויות
-    datasets: [
-        {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3], // ערכים
-            backgroundColor: [ // צבעי הפרוסות
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [ // צבעי הקווים
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1, // רוחב הקווים
+  const [dataFromApi, setData] = useState([]);
+
+  useEffect(() => {
+    const getAttack = async () => {
+      const response = await fetch( `http://localhost:3000/api/typesAttack/get-rating`)
+      const data = await response.json()
+      setData(data)      
+    }
+    getAttack()
+  },[])
+
+    const data = {
+        labels: dataFromApi.map((item: attackType) => item.name), 
+        datasets: [
+            {
+                label: "Sales", 
+                data: dataFromApi.map((item: attackType) => item.casualties), 
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)", 
+                borderWidth: 1, 
+            },
+        ],
+    };
+
+    const options = {
+        responsive: true, 
+        plugins: {
+            legend: {
+                display: true,
+            },
+            tooltip: {
+                enabled: true, 
+            },
         },
-    ],
-};
-  return (
-    <div >
-       <Pie data={data} />
+    };
+    return (
+    <div className="ranking-attack-types">
+    <Bar data={data} options={options} />
     </div>
-  )
+    )
 }

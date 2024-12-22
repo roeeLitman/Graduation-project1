@@ -89,7 +89,7 @@ export const topOrganizationsFromDb = async (city: string) => {
         return location;
     } catch (error) {
         console.error("[service] Error in top organizations:", error);
-        throw error; // ניהול שגיאות
+        throw error;
     }
 };
 

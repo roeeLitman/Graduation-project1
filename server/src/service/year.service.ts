@@ -67,6 +67,7 @@ export const YearsOrganization = async (req: yearsOranizationDTO) => {
 
             return result;
         } else if (typeof req.req === "string") {
+            
             const result = await YearModel.aggregate([
                 { $unwind: "$listOrganization" },
                 { $match: { "listOrganization.organization": req.req } },

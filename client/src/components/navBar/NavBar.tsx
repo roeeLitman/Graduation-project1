@@ -14,6 +14,7 @@ import {
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink } from "react-router-dom";
 
 
 export default function NavBar() {
@@ -45,16 +46,20 @@ export default function NavBar() {
                 anchor="left"
                 open={isDrawerOpen}
                 onClose={toggleDrawer(false)}
+                sx={{
+                    width: '50vw', 
+                    '& .MuiDrawer-paper': { width: '20vw' },
+                }}
             >
                 <List>
                     <ListItem>
-                        <Link to="/">Login</Link>
+                        <NavLink to="/">Login</NavLink>
                     </ListItem>
                     <ListItem>
-                        <ListItemText primary="About" />
+                        <NavLink to="/Frequency-of-incidents">Select year</NavLink>
                     </ListItem>
                     <ListItem>
-                        <ListItemText primary="Contact" />
+                        <NavLink to="/Frequency-of-incidents">Select year</NavLink>
                     </ListItem>
                 </List>
             </Drawer>

@@ -11,10 +11,8 @@ export default function App() {
             <NavBar />
             <Routes>
                 <Route path="/" element={<RankingAttackTypes />} />
-                <Route
-                    path="/Frequency-of-incidents"
-                    element={<FrequencyOfIncidents />}
-                />
+                <Route path="/Frequency-of-incidents" element={<FrequencyOfIncidents />}/>
+                <Route path="/Frequency-of-incidents" element={<FrequencyOfIncidents />}/>
             </Routes>
         </div>
     );

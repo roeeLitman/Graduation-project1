@@ -5,6 +5,7 @@ import { useAppDispatch } from "./redux/store";
 import { getAttack } from "./redux/slices/attackSlice";
 import FrequencyOfIncidents from "./pages/FrequencyOfIncidents/FrequencyOfIncidents";
 import NavBar from "./components/navBar/NavBar";
+import InformationAboutOrganizations from "./pages/InformationAboutOrganizations/InformationAboutOrganizations";
 export default function App() {
     return (
         <div>
@@ -12,7 +13,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<RankingAttackTypes />} />
                 <Route path="/Frequency-of-incidents" element={<FrequencyOfIncidents />}/>
-                <Route path="/Frequency-of-incidents" element={<FrequencyOfIncidents />}/>
+                <Route path="/information-on-organizations" element={<InformationAboutOrganizations />}/>
             </Routes>
         </div>
     );

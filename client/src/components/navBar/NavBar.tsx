@@ -3,18 +3,16 @@ import {
     AppBar,
     Toolbar,
     IconButton,
-    Menu,
-    MenuItem,
     Typography,
     Drawer,
     List,
     ListItem,
-    ListItemText,
+    ListItemButton,
+    
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Link } from "react-router-dom";
-import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function NavBar() {
@@ -53,13 +51,13 @@ export default function NavBar() {
             >
                 <List>
                     <ListItem>
-                        <NavLink to="/">Login</NavLink>
+                        <ListItemButton><NavLink to="/">Login</NavLink></ListItemButton>
                     </ListItem>
                     <ListItem>
                         <NavLink to="/Frequency-of-incidents">Select year</NavLink>
                     </ListItem>
                     <ListItem>
-                        <NavLink to="/Frequency-of-incidents">Select year</NavLink>
+                        <NavLink to="/information-on-organizations">information about organizations</NavLink>
                     </ListItem>
                 </List>
             </Drawer>

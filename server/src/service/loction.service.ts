@@ -1,5 +1,6 @@
 import LocationModel from "../models/Loction";
 import OrganizationModel from "../models/organization";
+import topOranizationDTO from "../types/dto/topOranizationDTO";
 
 
 export const placesWithMostCasualties = async(city:string)=>{
@@ -93,7 +94,21 @@ export const topOrganizationsFromDb = async (city: string) => {
 };
 
 
-
+export const topLocationForOrgaization = async(organization:topOranizationDTO) => {
+    try {
+        const locations = await LocationModel.find({"events.organization": organization.organization})
+        .sort({ casualties: -1 }) 
+        .select('-listEvents')
+        .select('-events')
+        .limit(10)
+        if(locations.length !== 0){
+        return locations}
+        throw new Error("Location not found")
+    } catch (error) {
+        console.error(" service Error top oranization location", error);
+        throw error
+    }
+}
 
 
 

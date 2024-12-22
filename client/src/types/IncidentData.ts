@@ -3,3 +3,9 @@ export interface IncidentData {
     year: number;            
     organization: string;    
 }
+
+export interface EventData {
+    totalEvents: number;   
+    organization: string;  
+    year: number;          
+}

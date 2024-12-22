@@ -26,7 +26,7 @@ export default function InformationAboutOrganizations() {
     }, []);
     
     const data = {
-        labels: dataFromApi.map((item: any) => item.year),
+        labels: dataFromApi.map((item) => item.year),
         datasets: [
             {
                 data: dataFromApi.map((item) => item.totalIncidents),

@@ -12,16 +12,27 @@ export const getYearService = async ({firstyear,lastyear,decade, fiveyear}:IFind
             throw new Error("No data");
         }
         if(firstyear && lastyear){
-            return await YearModel.find({year:{$gte:firstyear,$lte:lastyear}});
+            return await YearModel.find({year:{$gte:firstyear,$lte:lastyear}})
+            .select('-listOrganization')
+            .select('-listEvents');
         }
         if(firstyear){
-            return await YearModel.find({year:firstyear});
+            return await YearModel.find({year:firstyear})
+            .select('-listOrganization')
+            .select('-listEvents');
+
         }
         if(decade){
-            return await YearModel.find({year:{$gte:beforeDecade}});
+            return await YearModel.find({year:{$gte:beforeDecade}})
+            .select('-listOrganization')
+            .select('-listEvents');
+
         }
         if(fiveyear){
-            return await YearModel.find({year:{$gte:beforeFiveYea}});
+            return await YearModel.find({year:{$gte:beforeFiveYea}})
+            .select('-listOrganization')
+            .select('-listEvents');
+
         }
     } catch (error) {
         console.log(error);

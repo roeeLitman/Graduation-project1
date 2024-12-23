@@ -51,6 +51,8 @@ export default function FrequencyOfIncidents() {
     }
 
     const handleChange = (event: SelectChangeEvent) => {
+        setFirstyear("")
+        setLastyear("")
         if (
             event.target.value === "decade=true" ||
             event.target.value === "fiveyear=true"
@@ -143,27 +145,20 @@ export default function FrequencyOfIncidents() {
             </Stack>
             {selected === "Select a range" ? (
                 <Stack display={"flex"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
-                    <TextField
-                        id="standard-basic"
-                        type="number"
-                        label="first year"
-                        variant="standard"
-                        value={firstyear}
-                        onChange={(e) => setFirstyear(e.target.value)}
-                    />
-                    <TextField
-                        type="number"
-                        id="last year"
-                        label="Standard"
-                        variant="standard"
-                        value={lastyear}
-                        onChange={(e) => setLastyear(e.target.value)}
-                    />
+                    <InputLabel id="demo-simple-select-label">First year</InputLabel>
+                    <Select label="First year" value={firstyear} fullWidth onChange={(e) => setFirstyear(e.target.value)}>
+                        {MenuItems}
+                    </Select>
+                    <InputLabel id="demo-simple-select-label">Last year</InputLabel>
+                    <Select label="Last year" value={lastyear} fullWidth onChange={(e) => setLastyear(e.target.value)}>
+                        {MenuItems}
+                    </Select>
                     <Button sx={{width: 30 + "%"}} variant="contained" onClick={hndelOnclick}>send</Button>
                 </Stack>
             ) : selected === "Select one year" ? (
                 <Stack display={"flex"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
-                    <Select value={firstyear} fullWidth onChange={(e) => setFirstyear(e.target.value)}>
+                    <InputLabel id="demo-simple-select-label">First year</InputLabel>
+                    <Select label="First year"  value={firstyear} fullWidth onChange={(e) => setFirstyear(e.target.value)}>
                         {MenuItems}
                     </Select>
                     <Button sx={{width: 30 + "%"}} variant="contained" onClick={hndelOnclick}>send</Button>

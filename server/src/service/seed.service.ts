@@ -118,22 +118,27 @@ export const seedOrganization = async () => {
                 const newOrganization = new Organization({
                     name: event.organization,
                     casualties: event.casualties,
-                    listEvents: [event._id] 
+                    listEvents: [event._id],
+                    lat: event.lat,
+                    long: event.long 
                 });
+                console.log(newOrganization);
+                
                 await newOrganization.save(); 
                 number++; 
                 console.log(`Saved new orgization`);
             } else {
                 await organizationModel.updateOne({
                     $push: { listEvents: event._id }, 
-                    $inc: { casualties: event.casualties } 
+                    $inc: { casualties: event.casualties } ,
+                    $set: { lat: event.lat, long: event.long }
                 });
                 console.log(`Updated  orgization`);
             }
         }
         console.log(`new organization saved successfully`);
     } catch (err) {
-        console.error('Error organization:', err);
+        console.log('Error organization',err);
         throw err;
     }
 };

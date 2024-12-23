@@ -32,44 +32,65 @@ export const placesWithMostCasualties = async(city:string | undefined)=>{
 
 // פונקציית עזר לארגונים ללא עיר
 const getTopOrganizations = async () => {
-    return OrganizationModel.aggregate([
+    const organizations = await OrganizationModel.aggregate([
         {
             $addFields: {
-                eventsCount: { $size: "$listEvents" }, // ספירת האירועים
-            },
+                eventsCount: { $size: "$listEvents" }
+            }
         },
-        { $sort: { eventsCount: -1 } }, // מיון לפי כמות אירועים
-        { $limit: 5 }, // הגבלת התוצאה ל-5
+        {
+            $sort: { eventsCount: -1 }
+        },
+        {
+            $limit: 5
+        },
         {
             $project: {
                 name: 1,
-                eventsCount: 1, // רק שדות נדרשים
-            },
-        },
+                eventsCount: 1,
+                lat: 1,  
+                long: 1,  
+                casualties: 1, 
+                 
+            }
+        }
     ]);
+    return organizations;
 };
 
 
 // פונקציית עזר לארגונים עם עיר
 const getTopOrganizationsByCity = async (city: string) => {
-    return LocationModel.aggregate([
-        { $match: { city } }, 
-        { $unwind: "$events" }, 
+    console.log(city);
+    
+    const location = await LocationModel.aggregate([
+        { $match: { city: city } },
+        { $unwind: "$events" },
         {
             $group: {
-                _id: "$events.organization",
-                totalEvents: { $sum: "$events.amountEvents" }, 
-            },
+                _id: "$events.organization", 
+                totalEvents: { $sum: "$events.amountEvents" },
+                lat: { $first: "$lat" },   
+                long: { $first: "$long" }  
+            }
         },
-        { $sort: { totalEvents: -1 } }, // מיון לפי כמות האירועים
-        { $limit: 5 }, // הגבלת התוצאה ל-5
+        {
+            $sort: { totalEvents: -1 }
+        },
+        {
+            $limit: 5
+        },
         {
             $project: {
                 organization: "$_id",
                 totalEvents: 1,
-            },
-        },
+                lat: 1,  
+                long: 1,
+                city: 1,
+            }
+        }
     ]);
+    return location;
 };
 
 // פונקציה ראשית

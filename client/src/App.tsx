@@ -6,6 +6,7 @@ import NavBar from "./components/navBar/NavBar";
 import InformationAboutOrganizations from "./pages/InformationAboutOrganizations/InformationAboutOrganizations";
 import NumberOfCasualties from "./pages/NumberOfCasualties/NumberOfCasualties";
 import TerrorHighestCasualties from "./pages/terrorHighestCasualties/TerrorHighestCasualties";
+import TopTerrorOrganizations from "./pages/TopTerrorOrganizations/TopTerrorOrganizations";
 export default function App() {
     return (
         <div>
@@ -22,6 +23,7 @@ export default function App() {
                 />
                 <Route path="/Number-of-casualties" element={<NumberOfCasualties />} />
                 <Route path="/terror-highest-casualties" element={<TerrorHighestCasualties />} />
+                <Route path="/top-terror-organizations" element={<TopTerrorOrganizations />} />
             </Routes>
         </div>
     );

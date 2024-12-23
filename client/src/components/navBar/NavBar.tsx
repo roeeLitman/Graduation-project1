@@ -65,6 +65,9 @@ export default function NavBar() {
                     <ListItem>
                         <NavLink to="/terror-highest-casualties">terror highest casualties</NavLink>
                     </ListItem>
+                    <ListItem>
+                        <NavLink to="/top-terror-organizations">top terror organizations</NavLink>
+                    </ListItem>
                 </List>
             </Drawer>
         </>

@@ -24,7 +24,7 @@ export default function NavBar() {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" sx={{marginBottom: "4px"}}>
                 <Toolbar variant="dense">
                     <IconButton
                         edge="start"
@@ -51,7 +51,7 @@ export default function NavBar() {
             >
                 <List>
                     <ListItem>
-                        <ListItemButton><NavLink to="/">Login</NavLink></ListItemButton>
+                        <ListItemButton> <NavLink to="/">Deadliest Attack Types Analysis</NavLink></ListItemButton>
                     </ListItem>
                     <ListItem>
                         <NavLink to="/Frequency-of-incidents">Select year</NavLink>

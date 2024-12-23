@@ -26,12 +26,12 @@ ChartJS.register(
 );
 
 const colors = [
-    "rgba(255, 99, 132)", 
-    "rgba(54, 162, 235)", 
-    "rgba(255, 206, 86)", 
-    "rgba(75, 192, 192)", 
+    "rgba(255, 99, 132)",
+    "rgba(54, 162, 235)",
+    "rgba(255, 206, 86)",
+    "rgba(75, 192, 192)",
     "rgba(153, 102, 255)",
-    "rgba(255, 159, 64)", 
+    "rgba(255, 159, 64)",
 ];
 
 export default function FrequencyOfIncidents() {
@@ -53,15 +53,15 @@ export default function FrequencyOfIncidents() {
     };
 
     const hndelOnclick = async () => {
-        console.log(!lastyear);
-        
+        if(!firstyear)  return
+
         const response = await fetch(
             `http://localhost:3000/api/year/incident-trends?${
                 !lastyear
                     ? `firstyear=${firstyear}`
                     : `firstyear=${firstyear}&lastyear=${lastyear}`
             }`
-        )        
+        );
         const data = await response.json();
         setData(data);
     };
@@ -73,7 +73,7 @@ export default function FrequencyOfIncidents() {
             );
             const data = await response.json();
             console.log(year);
-            
+
             setData(data);
         };
         getAttack();
@@ -105,22 +105,35 @@ export default function FrequencyOfIncidents() {
         },
     };
     return (
-        <div className="ranking-attack-types">
-            <Typography variant="h3"   id="demo-simple-select-label">Select year</Typography>
-            <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={!selected ? year : selected}
-                label="Age"
-                onChange={handleChange}
-            >
-                <MenuItem value={"decade=true"}>10 years</MenuItem>
-                <MenuItem value={"fiveyear=true"}>5 years</MenuItem>
-                <MenuItem value={"Select one year"}>Select one year</MenuItem>
-                <MenuItem value={"Select a range"}>Select a range</MenuItem>
-            </Select>
+        <Stack  sx={{backgroundColor: "#fff", padding: 3, borderRadius: 2, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", border: "1px solid #e0e0e0",}}
+        spacing={2}
+        direction="column"
+        alignItems="space-between"
+        justifyContent={"space-between"}
+        >
+            <Stack>
+                <Typography variant="h4" id="demo-simple-select-label">
+                    Incident Frequency by Year and Month
+                </Typography>
+            </Stack>
+            <Stack>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={!selected ? year : selected}
+                    label="Age"
+                    onChange={handleChange}
+                >
+                    <MenuItem value={"decade=true"}>10 years</MenuItem>
+                    <MenuItem value={"fiveyear=true"}>5 years</MenuItem>
+                    <MenuItem value={"Select one year"}>
+                        Select one year
+                    </MenuItem>
+                    <MenuItem value={"Select a range"}>Select a range</MenuItem>
+                </Select>
+            </Stack>
             {selected === "Select a range" ? (
-                <Stack>
+                <Stack display={"flex"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
                     <TextField
                         id="standard-basic"
                         type="number"
@@ -137,10 +150,10 @@ export default function FrequencyOfIncidents() {
                         value={lastyear}
                         onChange={(e) => setLastyear(e.target.value)}
                     />
-                    <Button onClick={hndelOnclick}>send</Button>
+                    <Button sx={{width: 30 + "%"}} variant="contained" onClick={hndelOnclick}>send</Button>
                 </Stack>
             ) : selected === "Select one year" ? (
-                <Stack display={"flex"}>
+                <Stack display={"flex"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
                     <TextField
                         id="select one year"
                         type="number"
@@ -149,10 +162,12 @@ export default function FrequencyOfIncidents() {
                         value={firstyear}
                         onChange={(e) => setFirstyear(e.target.value)}
                     />
-                    <Button onClick={hndelOnclick}>send</Button>
+                    <Button sx={{width: 30 + "%"}} variant="contained" onClick={hndelOnclick}>send</Button>
                 </Stack>
             ) : null}
-            <Bar data={data} options={options} />
-        </div>
+            <Stack justifyContent={"center"} alignItems={"center"} width={50 + "vw"} height={50 + "vh"}>
+                <Bar data={data} options={options} />
+            </Stack>
+        </Stack >
     );
 }

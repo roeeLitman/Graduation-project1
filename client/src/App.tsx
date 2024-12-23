@@ -7,24 +7,36 @@ import InformationAboutOrganizations from "./pages/InformationAboutOrganizations
 import NumberOfCasualties from "./pages/NumberOfCasualties/NumberOfCasualties";
 import TerrorHighestCasualties from "./pages/terrorHighestCasualties/TerrorHighestCasualties";
 import TopTerrorOrganizations from "./pages/TopTerrorOrganizations/TopTerrorOrganizations";
+import { Stack } from "@mui/material";
 export default function App() {
     return (
-        <div>
+        <Stack width={100 + "vw"} height={100 + "vh"}>
             <NavBar />
-            <Routes>
-                <Route path="/" element={<RankingAttackTypes />} />
-                <Route
-                    path="/Frequency-of-incidents"
-                    element={<FrequencyOfIncidents />}
-                />
-                <Route
-                    path="/information-on-organizations"
-                    element={<InformationAboutOrganizations />}
-                />
-                <Route path="/Number-of-casualties" element={<NumberOfCasualties />} />
-                <Route path="/terror-highest-casualties" element={<TerrorHighestCasualties />} />
-                <Route path="/top-terror-organizations" element={<TopTerrorOrganizations />} />
-            </Routes>
-        </div>
+            <Stack alignItems={"center"} justifyContent={"center"} >
+                <Routes>
+                    <Route path="/" element={<RankingAttackTypes />} />
+                    <Route
+                        path="/Frequency-of-incidents"
+                        element={<FrequencyOfIncidents />}
+                    />
+                    <Route
+                        path="/information-on-organizations"
+                        element={<InformationAboutOrganizations />}
+                    />
+                    <Route
+                        path="/Number-of-casualties"
+                        element={<NumberOfCasualties />}
+                    />
+                    <Route
+                        path="/terror-highest-casualties"
+                        element={<TerrorHighestCasualties />}
+                    />
+                    <Route
+                        path="/top-terror-organizations"
+                        element={<TopTerrorOrganizations />}
+                    />
+                </Routes>
+            </Stack>
+        </Stack>
     );
 }

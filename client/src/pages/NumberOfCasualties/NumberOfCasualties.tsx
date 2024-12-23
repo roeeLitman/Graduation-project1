@@ -23,16 +23,15 @@ export default function NumberOfCasualties() {
 
             if (Array.isArray(datafromApi)) {
                 setData((prevData) => [...prevData, ...datafromApi]);
-            } else if (datafromApi) {                
+            } else if (datafromApi) {
                 setData((prevData) => [...prevData, datafromApi]);
             }
-
         };
         getTopLocations();
     }, [selectCyti]);
 
     return (
-        <Stack spacing={2} direction="column">
+        <Stack  sx={{backgroundColor: "#fff", padding: 3, borderRadius: 2, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", border: "1px solid #e0e0e0",}}>
             <Stack
                 direction={"row"}
                 spacing={2}
@@ -40,14 +39,21 @@ export default function NumberOfCasualties() {
                 justifyContent={"space-around"}
             >
                 <Typography variant="h4" id="demo-simple-select-label">
-                    Places with the highest average casualties
+                    Regions with Highest Casualty Rates per Incident
                 </Typography>
                 <Stack spacing={2} direction="row" padding={2}>
-                    <TextField value={city} onChange={(e) => setCity(e.target.value)} variant="filled" label="enter city or nothing" />
-                    <Button onClick={handelOnClick} variant="contained">Slect city</Button>
+                    <TextField
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        variant="filled"
+                        label="enter city or nothing"
+                    />
+                    <Button onClick={handelOnClick} variant="contained">
+                        Slect city
+                    </Button>
                 </Stack>
             </Stack>
-            <Stack>
+            <Stack  >
                 <Map data={data} />
             </Stack>
         </Stack>

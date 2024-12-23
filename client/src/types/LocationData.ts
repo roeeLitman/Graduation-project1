@@ -4,5 +4,4 @@ export interface LocationData {
     casualties: number;
     lat: number;       
     long: number;      
-    __v: number;       
 }

@@ -59,6 +59,9 @@ export default function NavBar() {
                     <ListItem>
                         <NavLink to="/information-on-organizations">information about organizations</NavLink>
                     </ListItem>
+                    <ListItem>
+                        <NavLink to="/Number-of-casualties">Places with the highest average casualties</NavLink>
+                    </ListItem>
                 </List>
             </Drawer>
         </>

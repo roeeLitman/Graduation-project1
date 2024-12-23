@@ -3,9 +3,10 @@ import OrganizationModel from "../models/organization";
 import topOranizationDTO from "../types/dto/topOranizationDTO";
 
 
-export const placesWithMostCasualties = async(city:string)=>{
+export const placesWithMostCasualties = async(city:string | undefined)=>{
     try {
-        if(!!city){            
+        if(!city){       
+                 
             const location =await LocationModel.find({})
             .sort({ casualties: -1 }) 
             .select('-listEvents')

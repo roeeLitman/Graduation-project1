@@ -40,6 +40,15 @@ export default function FrequencyOfIncidents() {
     const [selected, setSelected] = useState("");
     const [firstyear, setFirstyear] = useState("");
     const [lastyear, setLastyear] = useState("");
+    const MenuItems: JSX.Element[] = []
+
+    for (let i = 1970; i < 2025; i++) {
+        MenuItems.push(
+            <MenuItem key={i} value={i}>
+                {i}
+            </MenuItem>
+        )
+    }
 
     const handleChange = (event: SelectChangeEvent) => {
         if (
@@ -154,14 +163,9 @@ export default function FrequencyOfIncidents() {
                 </Stack>
             ) : selected === "Select one year" ? (
                 <Stack display={"flex"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
-                    <TextField
-                        id="select one year"
-                        type="number"
-                        label="Standard"
-                        variant="standard"
-                        value={firstyear}
-                        onChange={(e) => setFirstyear(e.target.value)}
-                    />
+                    <Select value={firstyear} fullWidth onChange={(e) => setFirstyear(e.target.value)}>
+                        {MenuItems}
+                    </Select>
                     <Button sx={{width: 30 + "%"}} variant="contained" onClick={hndelOnclick}>send</Button>
                 </Stack>
             ) : null}

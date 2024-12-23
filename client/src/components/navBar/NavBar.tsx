@@ -8,15 +8,18 @@ import {
     List,
     ListItem,
     ListItemButton,
+    ListItemText,
+    Link,
     
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function NavBar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const navigit = useNavigate();
     const toggleDrawer =
         (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
             setIsDrawerOpen(open);
@@ -51,22 +54,34 @@ export default function NavBar() {
             >
                 <List>
                     <ListItem>
-                        <ListItemButton> <NavLink to="/">Deadliest Attack Types Analysis</NavLink></ListItemButton>
+                        <ListItemButton>
+                            <ListItemText primary="Deadliest Attack Types Analysis" onClick={()=>{navigit("/")}}/> 
+                        </ListItemButton>  
                     </ListItem>
                     <ListItem>
-                        <NavLink to="/Frequency-of-incidents">Select year</NavLink>
+                        <ListItemButton>
+                            <ListItemText primary="Select year" onClick={()=>{navigit("/Frequency-of-incidents")}}/>
+                        </ListItemButton>
                     </ListItem>
                     <ListItem>
-                        <NavLink to="/information-on-organizations">information about organizations</NavLink>
+                        <ListItemButton>
+                            <ListItemText primary="information about organizations" onClick={()=>{navigit("/information-on-organizations")}}/>  
+                        </ListItemButton> 
                     </ListItem>
                     <ListItem>
-                        <NavLink to="/Number-of-casualties">Places with the highest average casualties</NavLink>
+                        <ListItemButton>
+                            <ListItemText primary="Places with the highest average casualties" onClick={()=>{navigit("/Number-of-casualties")}}/>
+                        </ListItemButton>   
                     </ListItem>
                     <ListItem>
-                        <NavLink to="/terror-highest-casualties">terror highest casualties</NavLink>
+                        <ListItemButton>
+                            <ListItemText primary="terror highest casualties" onClick={()=>{navigit("/terror-highest-casualties")}}/>  
+                        </ListItemButton> 
                     </ListItem>
                     <ListItem>
-                        <NavLink to="/top-terror-organizations">top terror organizations</NavLink>
+                        <ListItemButton>
+                            <ListItemText primary="top terror organizations" onClick={()=>{navigit("/top-terror-organizations")}}/>
+                        </ListItemButton> 
                     </ListItem>
                 </List>
             </Drawer>

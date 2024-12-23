@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { EventData, OrganizationData } from "../../types/OrganizationData";
-import { Button, MenuItem, Select, SelectChangeEvent, Stack, TextField } from "@mui/material";
+import {
+    Button,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    Stack,
+    TextField,
+} from "@mui/material";
 import { Pie } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -41,8 +48,8 @@ export default function TopTerrorOrganizations() {
     };
 
     const handelOnClick = () => {
-        if(!city){
-            setSearchByCity(false)
+        if (!city) {
+            setSearchByCity(false);
         }
         setSearchByCity(!searchByCity);
     };
@@ -53,15 +60,14 @@ export default function TopTerrorOrganizations() {
                 `http://localhost:3000/api/location/top-organization?city=${city}`
             );
             if (!response.ok) {
-                
                 throw new Error(response.statusText);
             }
             const datafromApi = await response.json();
 
-            if (datafromApi[0] !==  "location not found") {                
+            if (datafromApi[0] !== "location not found") {
                 setData(datafromApi);
-            }else{
-                setSearchByCity(false)
+            } else {
+                setSearchByCity(false);
             }
         };
         getTopLocations();
@@ -97,9 +103,25 @@ export default function TopTerrorOrganizations() {
         },
     };
     return (
-        <div>
-            <Stack spacing={2} direction="column">
+        <Stack
+            sx={{
+                backgroundColor: "#fff",
+                padding: 3,
+                borderRadius: 2,
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                border: "1px solid #e0e0e0",
+            }}
+        >
+            <Stack
+                marginBottom={2}
+                spacing={2}
+                direction="column"
+                alignItems={"center"}
+                justifyContent={"center"}
+            >
                 <Select
+                    autoWidth={true}
+                    sx={{ width: "20%" }}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={displayTabelOrMap}
@@ -112,31 +134,50 @@ export default function TopTerrorOrganizations() {
                     <MenuItem value={"show-map"}>Show map </MenuItem>
                 </Select>
             </Stack>
-            <Stack spacing={2} direction="column">
-                <TextField value={city} onChange={(e) => setCity(e.target.value)} />
-                <Button onClick={() => handelOnClick()}>Search</Button>
+            <Stack
+                spacing={2}
+                direction="column"
+                justifyContent={"center"}
+                alignItems={"center"}
+                marginBottom={2}
+            >
+                <TextField
+                    sx={{ width: "20%" }}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <Button
+                    variant="contained"
+                    sx={{ width: "20%" }}
+                    onClick={() => handelOnClick()}
+                >
+                    Search
+                </Button>
             </Stack>
 
-                
             {displayTabelOrMap === "show-table" ? (
                 <Stack
+                    justifyContent={"center"}
+                    alignItems={"center"}
                     spacing={2}
                     direction="column"
-                    width={90 + "vw"}
-                    height={90 + "vh"}
+                    width={50 + "vw"}
+                    height={50 + "vh"}
                 >
                     <Pie data={dataToPie} options={options} />
                 </Stack>
             ) : (
                 <Stack
+                    justifyContent={"center"}
+                    alignItems={"center"}
                     spacing={2}
                     direction="column"
-                    width={90 + "vw"}
-                    height={90 + "vh"}
+                    width={50 + "vw"}
+                    height={50 + "vh"}
                 >
                     <Map data={data} />
                 </Stack>
             )}
-        </div>
+        </Stack>
     );
 }

@@ -37,7 +37,8 @@ export default function TerrorHighestCasualties() {
         getTopLocations();
     }, [selectOrganztion]);
     return (
-        <Stack spacing={2} direction="column">
+        <Stack sx={{backgroundColor: "#fff", padding: 3, borderRadius: 2, boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", border: "1px solid #e0e0e0",}}
+        width={60 + "vw"} >
             <Stack
                 direction={"row"}
                 spacing={2}
@@ -45,7 +46,7 @@ export default function TerrorHighestCasualties() {
                 justifyContent={"space-around"}
             >
                 <Typography variant="h4" id="demo-simple-select-label">
-                    terror highest casualties
+                    Regions with Deadliest Attacks by Organization
                 </Typography>
                 <Stack spacing={2} direction="row" padding={2}>
                     <TextField

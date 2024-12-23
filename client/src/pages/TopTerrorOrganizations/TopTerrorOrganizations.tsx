@@ -7,6 +7,7 @@ import {
     SelectChangeEvent,
     Stack,
     TextField,
+    Typography,
 } from "@mui/material";
 import { Pie } from "react-chartjs-2";
 import {
@@ -119,6 +120,9 @@ export default function TopTerrorOrganizations() {
                 alignItems={"center"}
                 justifyContent={"center"}
             >
+                <Typography variant="h4" id="demo-simple-select-label">
+                    top terror organizations
+                </Typography>
                 <Select
                     autoWidth={true}
                     sx={{ width: "20%" }}
@@ -167,14 +171,7 @@ export default function TopTerrorOrganizations() {
                     <Pie data={dataToPie} options={options} />
                 </Stack>
             ) : (
-                <Stack
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    spacing={2}
-                    direction="column"
-                    width={50 + "vw"}
-                    height={50 + "vh"}
-                >
+                <Stack spacing={2} direction="column" width={50 + "vw"}>
                     <Map data={data} />
                 </Stack>
             )}

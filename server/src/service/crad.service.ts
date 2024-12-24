@@ -14,3 +14,4 @@ export const getAll = async(page:number)=>{
         console.log(`cant' get all: ${err}`);    
     }
 }
+

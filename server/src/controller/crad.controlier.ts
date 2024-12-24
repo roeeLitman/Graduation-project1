@@ -10,3 +10,4 @@ export const getAllEvents = async(req:Request<any,any,{page:number}>,res:Respons
         res.status(400).json((err as Error).message)  
     }
 }
+

@@ -1,8 +1,7 @@
 import { connect } from "mongoose";
 import mainListModel from "../models/mainList";
 import TypesAttackModel from "../models/TypesAttack";
-import { seedMain } from "../service/mainList.service";
-import { seedAttack, seedLOction, seedOrganization, seedYear } from "../service/seed.service";
+import { seedAttack, seedLOction, seedMain, seedOrganization, seedYear } from "../service/seed.service";
 import organizationModel from "../models/organization";
 import LoctionModel from "../models/Loction";
 import YearModel from "../models/Year";

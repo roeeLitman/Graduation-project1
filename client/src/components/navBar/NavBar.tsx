@@ -10,12 +10,10 @@ import {
     ListItemButton,
     ListItemText,
     Link,
-    
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { NavLink, useNavigate } from "react-router-dom";
-import MenuIcon from '@mui/icons-material/Menu';
-
+import { useNavigate } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function NavBar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -27,7 +25,7 @@ export default function NavBar() {
 
     return (
         <>
-            <AppBar position="static" sx={{marginBottom: "4px"}}>
+            <AppBar position="static" sx={{ marginBottom: "4px" }}>
                 <Toolbar variant="dense">
                     <IconButton
                         edge="start"
@@ -48,40 +46,80 @@ export default function NavBar() {
                 open={isDrawerOpen}
                 onClose={toggleDrawer(false)}
                 sx={{
-                    width: '50vw', 
-                    '& .MuiDrawer-paper': { width: '20vw' },
+                    width: "50vw",
+                    "& .MuiDrawer-paper": { width: "20vw" },
                 }}
             >
                 <List>
                     <ListItem>
                         <ListItemButton>
-                            <ListItemText primary="Deadliest Attack Types Analysis" onClick={()=>{navigit("/")}}/> 
-                        </ListItemButton>  
-                    </ListItem>
-                    <ListItem>
-                        <ListItemButton>
-                            <ListItemText primary="Select year" onClick={()=>{navigit("/Frequency-of-incidents")}}/>
+                            <ListItemText
+                                primary="Deadliest Attack Types Analysis"
+                                onClick={() => {
+                                    navigit("/");
+                                }}
+                            />
                         </ListItemButton>
                     </ListItem>
                     <ListItem>
                         <ListItemButton>
-                            <ListItemText primary="information about organizations" onClick={()=>{navigit("/information-on-organizations")}}/>  
-                        </ListItemButton> 
+                            <ListItemText
+                                primary="Select year"
+                                onClick={() => {
+                                    navigit("/Frequency-of-incidents");
+                                }}
+                            />
+                        </ListItemButton>
                     </ListItem>
                     <ListItem>
                         <ListItemButton>
-                            <ListItemText primary="Places with the highest average casualties" onClick={()=>{navigit("/Number-of-casualties")}}/>
-                        </ListItemButton>   
+                            <ListItemText
+                                primary="information about organizations"
+                                onClick={() => {
+                                    navigit("/information-on-organizations");
+                                }}
+                            />
+                        </ListItemButton>
                     </ListItem>
                     <ListItem>
                         <ListItemButton>
-                            <ListItemText primary="terror highest casualties" onClick={()=>{navigit("/terror-highest-casualties")}}/>  
-                        </ListItemButton> 
+                            <ListItemText
+                                primary="Places with the highest average casualties"
+                                onClick={() => {
+                                    navigit("/Number-of-casualties");
+                                }}
+                            />
+                        </ListItemButton>
                     </ListItem>
                     <ListItem>
                         <ListItemButton>
-                            <ListItemText primary="top terror organizations" onClick={()=>{navigit("/top-terror-organizations")}}/>
-                        </ListItemButton> 
+                            <ListItemText
+                                primary="terror highest casualties"
+                                onClick={() => {
+                                    navigit("/terror-highest-casualties");
+                                }}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemButton>
+                            <ListItemText
+                                primary="top terror organizations"
+                                onClick={() => {
+                                    navigit("/top-terror-organizations");
+                                }}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemButton>
+                            <ListItemText
+                                primary="create new event"
+                                onClick={() => {
+                                    navigit("/create");
+                                }}
+                            />
+                        </ListItemButton>
                     </ListItem>
                 </List>
             </Drawer>

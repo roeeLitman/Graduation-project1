@@ -8,6 +8,7 @@ import NumberOfCasualties from "./pages/NumberOfCasualties/NumberOfCasualties";
 import TerrorHighestCasualties from "./pages/terrorHighestCasualties/TerrorHighestCasualties";
 import TopTerrorOrganizations from "./pages/TopTerrorOrganizations/TopTerrorOrganizations";
 import { Stack } from "@mui/material";
+import CreateNewEvent from "./pages/CRAD/create/CreateNewEvent";
 export default function App() {
     return (
         <Stack width={100 + "vw"} height={100 + "vh"}>
@@ -34,6 +35,10 @@ export default function App() {
                     <Route
                         path="/top-terror-organizations"
                         element={<TopTerrorOrganizations />}
+                    />
+                    <Route
+                        path="/create"
+                        element={<CreateNewEvent />}
                     />
                 </Routes>
             </Stack>

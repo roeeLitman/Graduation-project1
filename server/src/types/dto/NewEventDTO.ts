@@ -1,4 +1,7 @@
+import mongoose from "mongoose";
+
 export interface NewEvent {
+    _id?: mongoose.Types.ObjectId;
     year: number;
     month: number;
     city: string

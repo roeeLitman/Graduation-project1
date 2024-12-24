@@ -21,6 +21,8 @@ app.use(express.json());
 app.use("/api/year", yearRouter)
 app.use("/api/typesAttack", attackRouter)
 app.use("/api/location", loctionRouter)
+app.use("/api/crud",crudRouter)
+
 
 app.get("/ping", (req: Request, res: Response) => {
   res.status(200).send("pong");

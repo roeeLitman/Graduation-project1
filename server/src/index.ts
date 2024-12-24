@@ -7,6 +7,7 @@ import "dotenv/config";
 import yearRouter from "./routes/Year.route";
 import attackRouter from "./routes/attack.router";
 import loctionRouter from "./routes/loction.rout";
+import crudRouter from "./routes/crud.router";
 
 
 const PORT = process.env.PORT || 3000;
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use("/api/year", yearRouter)
 app.use("/api/typesAttack", attackRouter)
 app.use("/api/location", loctionRouter)
-app.use("/api/crud",crudRouter)
+app.use("/api/crud", crudRouter)
 
 
 app.get("/ping", (req: Request, res: Response) => {

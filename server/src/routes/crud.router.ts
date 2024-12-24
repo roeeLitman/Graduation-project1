@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAllEvents } from "../controllers/crudController";
+import { getAllEvents } from "../controller/crad.controlier";
 
 const cradRuter = Router()
 
-cradRuter.get("/get-all",getAllEvents)
+cradRuter.get("/get-hundred/:page",getAllEvents)
 
 
 export default cradRuter

@@ -1,7 +1,8 @@
 import fs from "fs";
 import mainListMOdel from "../models/mainList";
+import { NewEvent } from "../types/dto/NewEventDTO";
 
-export const createNewEvent = async (event: any) => {
+export const createNewEvent = async (event: NewEvent): Promise<NewEvent> => {
     try {
         if (
             !event.year ||
@@ -19,7 +20,7 @@ export const createNewEvent = async (event: any) => {
         const newMainList = new mainListMOdel({...event});
         await newMainList.save();
         return {
-            id: newMainList._id,
+            _id: newMainList._id,
             year: newMainList.year,
             month: newMainList.month,
             city: newMainList.city,

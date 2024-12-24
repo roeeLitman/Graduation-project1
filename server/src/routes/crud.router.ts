@@ -5,5 +5,7 @@ const cradRuter = Router()
 
 cradRuter.get("/get-hundred/:page",getAllEvents)
 
+cradRuter.post("/create-event",getAllEvents)
+
 
 export default cradRuter

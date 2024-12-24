@@ -10,7 +10,7 @@ import loctionRouter from "./routes/loction.rout";
 import crudRouter from "./routes/crud.router";
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 export const app = express();
 export const server = http.createServer(app);

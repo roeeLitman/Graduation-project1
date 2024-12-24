@@ -10,4 +10,4 @@ export interface NewEvent {
     attacktype: string
     organization: string
     casualties: number;
-  }
+}

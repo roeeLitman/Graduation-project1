@@ -51,7 +51,7 @@ export default function NavBar() {
                 }}
             >
                 <List>
-                    <ListItem>
+                    <ListItem style={{color: "black"}}>
                         <ListItemButton>
                             <ListItemText
                                 primary="Deadliest Attack Types Analysis"

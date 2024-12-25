@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { EventData, OrganizationData } from "../../types/OrganizationData";
 import {
     Button,

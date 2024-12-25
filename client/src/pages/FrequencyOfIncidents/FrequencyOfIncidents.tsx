@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Pie, Bar, Line } from "react-chartjs-2";
+import { useEffect, useState } from "react";
+import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
     BarElement,
@@ -12,9 +12,8 @@ import {
 import { AttackData } from "../../types/AttackData";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 ChartJS.register(
     ArcElement,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
     AppBar,
     Toolbar,
@@ -9,9 +9,7 @@ import {
     ListItem,
     ListItemButton,
     ListItemText,
-    Link,
 } from "@mui/material";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -19,7 +17,7 @@ export default function NavBar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const navigit = useNavigate();
     const toggleDrawer =
-        (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+        (open: boolean) => {
             setIsDrawerOpen(open);
         };
 
@@ -32,7 +30,7 @@ export default function NavBar() {
                         color="inherit"
                         aria-label="menu"
                         sx={{ mr: 2 }}
-                        onClick={toggleDrawer(true)}
+                        onClick={ () => toggleDrawer(true)}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -44,7 +42,7 @@ export default function NavBar() {
             <Drawer
                 anchor="left"
                 open={isDrawerOpen}
-                onClose={toggleDrawer(false)}
+                onClose={() => toggleDrawer(false)}
                 sx={{
                     width: "50vw",
                     "& .MuiDrawer-paper": { width: "20vw" },

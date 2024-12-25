@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { EventData, IncidentData } from "../../types/IncidentData";
 import {
@@ -51,8 +51,8 @@ export default function InformationAboutOrganizations() {
     const data = {
         labels:
             select === "select-year"
-                ? dataFromApi.map((item) => item.organization)
-                : dataFromApi.map((item) => item.year),
+                ? dataFromApi.map((item) => item.organization) as string[]
+                : dataFromApi.map((item) => item.year.toString()),  
         datasets: [
             {
                 data:

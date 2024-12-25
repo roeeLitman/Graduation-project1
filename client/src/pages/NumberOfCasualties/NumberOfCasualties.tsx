@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Map from "../../components/navBar/map/Map";
 import topLocationDTO from "../../types/TopLoction";
-import { current } from "@reduxjs/toolkit";
 import { Button, Stack, TextField, Typography } from "@mui/material";
 
 export default function NumberOfCasualties() {

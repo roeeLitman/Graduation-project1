@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useState } from "react";
 import {
     MapContainer,
     TileLayer,
@@ -26,9 +26,6 @@ export default function CreateNewEvent() {
     const [markersOnMap, setMarkersOnMap] = useState<JSX.Element[] | null>(
         null
     );
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const popupRef = useRef<L.Popup>(null);
-
     const [formData, setFormData] = useState<Incident>({
         year: null,
         month: null,

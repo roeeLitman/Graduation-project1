@@ -1,5 +1,5 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Map from "../../components/navBar/map/Map";
 import { LocationData } from "../../types/LocationData";
 

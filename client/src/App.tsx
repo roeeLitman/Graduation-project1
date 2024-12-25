@@ -1,5 +1,4 @@
-import React from "react";
-import { data, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import RankingAttackTypes from "./pages/RankingAttackTypes/RankingAttackTypes";
 import FrequencyOfIncidents from "./pages/FrequencyOfIncidents/FrequencyOfIncidents";
 import NavBar from "./components/navBar/NavBar";

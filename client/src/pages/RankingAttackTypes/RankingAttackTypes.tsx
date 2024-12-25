@@ -36,7 +36,7 @@ export default function RankingAttackTypes() {
     useEffect(() => {
         const getAttack = async () => {
             const response = await fetch(
-                `http://localhost:3000/api/typesAttack/get-rating/`
+                `https://graduation-project1-1.onrender.com/api/typesAttack/get-rating/`
             );
             const data = await response.json();
             setData(data);

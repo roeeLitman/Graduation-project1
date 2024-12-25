@@ -41,7 +41,7 @@ export default function CreateNewEvent() {
     });
     const createNewEvent = async () => {
         const response = await fetch(
-            "http://localhost:3000/api/crud/create-event",
+            "https://graduation-project1-1.onrender.com/api/crud/create-event",
             {
                 method: "POST",
                 headers: {
@@ -57,7 +57,7 @@ export default function CreateNewEvent() {
     useEffect(() => {
         const getEventsFromDb = async () => {
             const response = await fetch(
-                "http://localhost:3000/api/crud/get-hundred/1"
+                "https://graduation-project1-1.onrender.com/api/crud/get-hundred/1"
             );
             const datafromApi = await response.json();
             if (Array.isArray(datafromApi)) {

@@ -58,7 +58,7 @@ export default function TopTerrorOrganizations() {
     useEffect(() => {
         const getTopLocations = async () => {
             const response = await fetch(
-                `http://localhost:3000/api/location/top-organization?city=${city}`
+                `https://graduation-project1-1.onrender.com/api/location/top-organization?city=${city}`
             );
             if (!response.ok) {
                 throw new Error(response.statusText);
@@ -121,7 +121,7 @@ export default function TopTerrorOrganizations() {
                 justifyContent={"center"}
             >
                 <Typography variant="h4" id="demo-simple-select-label">
-                    top terror organizations
+                top terror organizations
                 </Typography>
                 <Select
                     autoWidth={true}

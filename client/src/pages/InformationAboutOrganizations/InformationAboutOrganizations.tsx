@@ -38,7 +38,7 @@ export default function InformationAboutOrganizations() {
     useEffect(() => {
         const getAttack = async () => {
             const response = await fetch(
-                `http://localhost:3000/api/year/year-oranization?req=${
+                `https://graduation-project1-1.onrender.com/api/year/year-oranization?req=${
                     year ? year : nameOfOrganization
                 }`
             );

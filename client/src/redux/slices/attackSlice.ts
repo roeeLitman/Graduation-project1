@@ -17,7 +17,7 @@ export const getAttack = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await fetch(
-                `http://localhost:3000/api/typesAttack/get-rating`
+                `https://graduation-project1-1.onrender.com/api/typesAttack/get-rating`
             );
 
             if (!response.ok) {

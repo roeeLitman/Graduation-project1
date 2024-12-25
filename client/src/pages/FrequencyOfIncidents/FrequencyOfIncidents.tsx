@@ -67,7 +67,7 @@ export default function FrequencyOfIncidents() {
         if(!firstyear)  return
 
         const response = await fetch(
-            `http://localhost:3000/api/year/incident-trends?${
+            `https://graduation-project1-1.onrender.com/api/year/incident-trends?${
                 !lastyear
                     ? `firstyear=${firstyear}`
                     : `firstyear=${firstyear}&lastyear=${lastyear}`
@@ -80,7 +80,7 @@ export default function FrequencyOfIncidents() {
     useEffect(() => {
         const getAttack = async () => {
             const response = await fetch(
-                `http://localhost:3000/api/year/incident-trends?${year}`
+                `https://graduation-project1-1.onrender.com/api/year/incident-trends?${year}`
             );
             const data = await response.json();
             console.log(year);

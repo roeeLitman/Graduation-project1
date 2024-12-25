@@ -17,7 +17,7 @@ export default function NumberOfCasualties() {
     useEffect(() => {
         const getTopLocations = async () => {
             const response = await fetch(
-                `http://localhost:3000/api/location/top-location?city=${city}`
+                `https://graduation-project1-1.onrender.com/api/location/top-location?city=${city}`
             );
             const datafromApi = await response.json();
 

@@ -16,7 +16,7 @@ export default function TerrorHighestCasualties() {
     useEffect(() => {
         const getTopLocations = async () => {
             const response = await fetch(
-                `http://localhost:3000/api/location//top-location-for-organization?organization=${nameOfOrganiztion}`
+                `https://graduation-project1-1.onrender.com/api/location//top-location-for-organization?organization=${nameOfOrganiztion}`
             );
             if (!response.ok) {
                 throw new Error(response.statusText);

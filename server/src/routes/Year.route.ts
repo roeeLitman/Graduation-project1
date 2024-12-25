@@ -5,7 +5,7 @@ const yearRouter = Router()
 
 yearRouter.get("/incident-trends", getObjOfYearAndAttacks) 
 
- //(5) אם יקבל שנה יחזיר יציג את הארגונים לפי מספר הארגונים, ואם יקבל ארגון יציג את התקריות לפי שנים
+ //5
  yearRouter.get("/year-oranization", getYearsOrganization)
 
 export default yearRouter

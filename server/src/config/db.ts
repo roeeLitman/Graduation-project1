@@ -1,10 +1,10 @@
 import { connect } from "mongoose";
 import mainListModel from "../models/mainList";
 import TypesAttackModel from "../models/TypesAttack";
-import { seedAttack, seedLOction, seedMain, seedOrganization, seedYear } from "../service/seed.service";
 import organizationModel from "../models/organization";
 import LoctionModel from "../models/Loction";
 import YearModel from "../models/Year";
+// import { seedAttack, seedLOction, seedMain, seedOrganization, seedYear } from "../service/seed.service";
 export const connectDB = ( async()=>{
   try {
       await connect(process.env.MONGODB_URI as string)
